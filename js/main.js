@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // process bar
     setTimeout(function() {
-        firstQuestion();
+        firstGreetingAudio();
         $('.spinner').fadeOut();
         $('#preloader').delay(350).fadeOut('slow');
         $('body').delay(350).css({
@@ -37,9 +37,24 @@ function firstQuestion() {
         imageHeight: 300,
         background: '#fff url("img/iput-bg.jpg")',
         imageAlt: 'Custom image',
+        confirmButtonText: CONFIG.btnIntro
+    }).then(function() {
+        $('.content').show(200);
+    })
+}
+function firstGreetingAudio() {
+    $('.content').hide();
+    Swal.fire({
+        title: CONFIG.introTitle,
+        text: CONFIG.introDesc,
+        imageUrl: 'img/logi.gif',
+        imageWidth: 300,
+        imageHeight: 300,
+        background: '#fff url("img/iput-bg.jpg")',
+        imageAlt: 'Custom image',
         confirmButtonText: CONFIG.btnIntro,
-        preConfirm: () => {
-            const soundEffect = new Audio();
+    }).then(function() {
+        const soundEffect = new Audio();
             soundEffect.autoplay = true;
 
             // onClick of first interaction on page before I need the sounds
@@ -47,9 +62,7 @@ function firstQuestion() {
             soundEffect.src =
             "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
             soundEffect.src = "../sound/sound.mp3";
-          },
-    }).then(function() {
-        $('.content').show(200);
+        firstQuestion();
     })
 }
 
