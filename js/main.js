@@ -28,7 +28,7 @@ function init() {
 }
 
 function firstQuestion() {
-    $('.content').hide();
+    // $('.content').hide();
     Swal.fire({
         title: CONFIG.introTitle,
         text: CONFIG.introDesc,
